@@ -1,9 +1,22 @@
-import { View, Text } from "react-native";
+import Header from "@/components/Header";
+import { View, Text, ScrollView } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 const Home = () => {
   return (
-    <View className="flex-1 items-center justify-center">
-      <Text className="text-pink-900">Home Screen</Text>
-    </View>
+    <SafeAreaView
+      className="flex-1 items-center justify-center"
+      edges={["top"]}
+    >
+      <Header
+        title="Home"
+        showBack={false}
+        showSearch={true}
+        showMenu={true}
+        showLogo={true}
+        showCart={true}
+      />
+      <ScrollView disableScrollViewPanResponder={true}></ScrollView>
+    </SafeAreaView>
   );
 };
 

@@ -1,10 +1,24 @@
 import { Stack, Tabs } from "expo-router";
-import "../global.css";
+import "../../global.css";
 import { Ionicons } from "@expo/vector-icons";
+import { COLORS } from "@/constants";
 
 export default function RootLayout() {
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: COLORS.primary,
+        tabBarInactiveTintColor: "#CDCDE0",
+        tabBarStyle: {
+          height: 64,
+          backgroundColor: "white",
+          borderTopWidth: 1,
+          borderTopColor: "#F0F0F0",
+          paddingTop: 8,
+        },
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
