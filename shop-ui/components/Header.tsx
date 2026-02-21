@@ -13,6 +13,7 @@ const Header = ({
   showCart,
 }: HeaderProps) => {
   const router = useRouter();
+  const { itemCount } = { itemCount: 3 }; // Replace with actual cart item count from your state management};
   return (
     <View className="flex-row items-center justify-between bg-white px-4 py-3">
       {/* left */}
@@ -32,7 +33,7 @@ const Header = ({
         {showLogo ? (
           <View className="flex-1">
             <Image
-              source={require("@/../assets/logo.png")}
+              source={require("../assets/logo.png")}
               style={{ width: "100%", height: 25 }}
               resizeMode="contain"
             />
@@ -44,10 +45,28 @@ const Header = ({
             </Text>
           )
         )}
+
+        {(!title || !showSearch) && <View className="flex-1" />}
       </View>
 
       {/* right */}
-      <View></View>
+      <View className="flex-row items-center gap-4">
+        {showSearch && (
+          <TouchableOpacity>
+            <Ionicons name="search-outline" size={24} color={COLORS.primary} />
+          </TouchableOpacity>
+        )}
+        {showCart && (
+          <TouchableOpacity onPress={() => router.push("/(tabs)/cart")}>
+            <View className="relative">
+              <Ionicons name="cart-outline" size={24} color={COLORS.primary} />
+              <View className="absolute -top-2 -right-2 bg-red-500 rounded-full w-5 h-5 items-center justify-center">
+                <Text className="text-white text-xs">{itemCount}</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 };
